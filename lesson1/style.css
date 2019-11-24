@@ -21,4 +21,5 @@ li{
 }
 .selected{
     color: red;
+    text-decoration: underline;
 }
