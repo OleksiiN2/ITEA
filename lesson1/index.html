@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="index.js"></script> 
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <h1>ITEA: lesson 1</h1>
+        <div id="container2">
+            <div id="list">
+                    <ul id="list-items">
+                        <li class="selected">element</li>
+                        <li>element</li>
+                        <li>element</li>
+                        <li>element</li>
+                    </ul>
+            </div>
+            <div id="button-grp">
+                    <ul>
+                        <li><button onclick="selectFirst()">Выбрать первый элемент</button></li>
+                        <li><button onclick="selectLast()">Выбрать последний элемент</button></li>
+                        <li><button onclick="selectNext()">Выбрать следующий элемент</button></li>
+                        <li><button onclick="selectPrevious()">Выбрать предыдущий элемент</button></li>
+                        <li><button onclick="addToEnd()">Добавить элемент</button></li>
+                        <li><button onclick="deleteElement()">Удалить эелемент</button></li>
+                        <li><button onclick="addToStart()">Добавить в начало</button></li>
+                    </ul>       
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+#container{
+    margin:20px auto;
+    width: 60%;
+    border:1px solid;
+    border-radius: 5px;   
+}
+#container2{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+h1{
+    margin: 10px auto;
+    text-align: center;
+}
+ul{
+    text-align: center;
+}
+li{
+    list-style: none;
+    margin-top: 10px;
+}
+.selected{
+    color: red;
+}
