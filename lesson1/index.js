@@ -23,7 +23,10 @@ function selectFirst(){
         elements[i].className = "";
     }
     let ul = document.getElementById("list-items");
-    ul.firstElementChild.className = "selected";
+    
+    if(ul.firstElementChild){ 
+        ul.firstElementChild.className = "selected";
+    }
 }
 
 //Выбрать последний элемент
@@ -32,19 +35,23 @@ function selectLast(){
         elements[i].className = "";
     }
     let ul = document.getElementById("list-items");
-    ul.lastElementChild.className = "selected";
+    if(ul.firstElementChild){ 
+        ul.lastElementChild.className = "selected";
+    }
 }
 
 //Выбрать следующий элемент
 function selectNext(){
     let el = document.getElementsByClassName("selected")[0];
-    let nextEl = el.nextElementSibling;
-    
-    if(nextEl){
-        nextEl.className = "selected";
-        el.className = "";
-    } else {
-        selectFirst();
+    if(el){
+        let nextEl = el.nextElementSibling;
+        
+        if(nextEl){
+            nextEl.className = "selected";
+            el.className = "";
+        } else {
+            selectFirst();
+        }
     }
 }
 
@@ -52,13 +59,15 @@ function selectNext(){
 function selectPrevious(){
    
     let el = document.getElementsByClassName("selected")[0];
-    let prevEl = el.previousElementSibling;
-   
-    if(prevEl){
-        prevEl.className = "selected";
-        el.className = "";
-    } else {
-        selectLast();
+    if(el){
+        let prevEl = el.previousElementSibling;
+    
+        if(prevEl){
+            prevEl.className = "selected";
+            el.className = "";
+        } else {
+            selectLast();
+        }
     }
 }
 
@@ -72,7 +81,6 @@ function addToEnd(){
     newLi.innerText = "element";
     newLi.className = "selected";
     ul.appendChild(newLi);
-   // ul.lastElementChild.className = "selected";
 }
 
 //Удалить эелемент
@@ -80,8 +88,12 @@ function deleteElement(){
 
     let ul = document.getElementById("list-items");
     let el = document.getElementsByClassName("selected")[0];
-    el.parentNode.removeChild(el);
-    ul.firstElementChild.className = "selected";
+    if(el){
+        el.parentNode.removeChild(el);
+        if(ul.firstElementChild){
+            ul.firstElementChild.className = "selected";
+        }
+    }
 }
 
 //Добавить в начало
