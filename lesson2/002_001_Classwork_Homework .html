@@ -1,0 +1,43 @@
+<!-- 
+    Перепишите все селекторы из первой папки 001_CSS_Selectors с помощью известных Вам методов и свойств.
+    В примере с классом добавьте к существующем классу, класс с именем newclass, а также выведите в консоль окне все стили что есть у элемента с этим классом
+    В примере с индентификатором добавьте свойства marginTop с значением 10px и background с значением red
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Id and classes</title>
+    <style>
+        #id1 {
+            color: black;
+        }
+        div.class1 {
+            color: blue;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            //п2. добавляем класс, выводим в консоль
+            let div = document.querySelectorAll("div.class1")[0];
+            div.classList.add("newClass");
+            for(i=0; i<div.classList.length; i++){
+                console.log(div.classList[i]);
+            }
+            //п3. добавляем стили заголовку
+            let h1 = document.querySelector("#id1");
+            h1.style.marginTop = "10px";
+            h1.style.background = "red";
+            
+        }
+    </script>
+</head>
+<body>
+    <h1 class="class1" id="id1">Title</h1>
+    <div class="class1">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla consequuntur, obcaecati recusandae enim laboriosam eaque, sint incidunt. Perferendis mollitia incidunt blanditiis eveniet, fuga sapiente. Magni dicta maxime fugiat sint soluta?        
+    </div>
+</body>
+</html>
