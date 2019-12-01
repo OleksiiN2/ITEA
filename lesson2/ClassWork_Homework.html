@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Classwork</title>
+    <style type="text/css">
+		div {
+    		width: 300px;
+    		height: 300px;
+    		border: 1px solid #000;
+    		float: left;
+    		
+    	}
+    </style>
+</head>
+<body>
+	<div id="one">one</div> 
+	
+    <script>
+		// п1. добавили еще один див
+		window.onload = function(){
+		let parent = document.querySelector("#one").parentNode;
+		console.log(parent);
+		let div = document.createElement("div");
+		div.textContent = "two";
+		div.id = "two";
+		div.setAttribute("onclick", "invoke(this)");
+		parent.appendChild(div);
+	}	
+		
+
+
+    function invoke(e) {
+    	//	console.log(e);
+    	/*var width = getComputedStyle(e).width;
+    	width = width.split('px');
+    	width = width[0]/2;
+    	e.style.width = width+'px';*/
+    	
+		var two_first = e.cloneNode(true);
+		two_first.id = "two_first";
+		two_first.removeAttribute("onclick");
+		two_first.textContent = "two_first";
+		e.insertAdjacentElement('beforebegin', two_first);
+		e.id = "two_second";
+		two_second.textContent = "two_second";
+		e.removeAttribute("onclick");
+
+    	
+    } 
+
+
+
+
+    // Добавьте после дива с id=one еще один див с текстом two и id=two
+    // На клик по id=two добавьте перед ним див с id - two_first, а див с id=two измените на two_second 
+    </script>
+</body>
+</html>

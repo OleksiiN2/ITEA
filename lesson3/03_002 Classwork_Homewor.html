@@ -1,0 +1,88 @@
+<!-- 
+    Запросите у пользователя ввести какую-то фразу.
+     Отобразите каждое отдельное слово в виде списка ul li. 
+     Также отобразите первое слово UPPERCASE, а последние 2 с маленькой. Найдите все буквы "а" их количество в модальное окно. 
+ -->
+ 
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+</head>
+<body>
+
+    <script>
+        let inputText = prompt("Enter anything you want here", "");
+        let myArray = inputText.split(" ");
+        let body = document.getElementsByTagName("body");
+
+        if (myArray.length>0){
+            let ul = document.createElement("ul");
+
+            for (i=0; i<myArray.length;i++){
+              //  console.log( "i="+i +" length = "+myArray.length);
+                let li = document.createElement("li");
+                if(i==0){
+                    li.innerText = myArray[i].toLocaleUpperCase();
+                }
+                else if(i===myArray.length-1 || i===myArray.length-2){
+                    li.innerText = myArray[i].toLocaleLowerCase();
+                }
+                else{
+                    li.innerText = myArray[i];
+                }
+                
+                ul.appendChild(li);
+                //console.log(myArray[i])
+            }
+            document.body.appendChild(ul);
+       }
+
+        let countA = 0;
+        let inputTextCopy = inputText.toLocaleLowerCase();
+        //console.log(inputTextCopy)
+        for (i = 0; i < inputTextCopy.length ; i++) {
+            if (inputTextCopy[i].indexOf("a") != -1) {
+                countA++
+            }
+        }
+        alert("Letters \'A\' and \'a\' in text --->>>>   " + countA + "   \<<<<---!");
+    
+
+       
+       
+      /*  var userInput = prompt("Введите фразу", "");
+        var letterA = 0;
+        for (var i = 0; userInput.length > i; i++) {
+            if (userInput[i].indexOf("a") != -1) {
+                letterA++
+            }
+        }
+        alert(letterA);
+        var words = userInput.split(" ");
+        var mainUL = document.createElement("UL");
+        mainUL.id = "phraseUL";
+        document.body.appendChild(mainUL);
+        var phraseUL = document.getElementById("phraseUL");
+        for (var i = 0; words.length > i; i++) {
+            var phraseLI = document.createElement("LI");
+            phraseLI.innerHTML = words[i];
+            phraseUL.appendChild(phraseLI);
+        }
+
+        var firtsPhrase = phraseUL.children[0].innerHTML.toUpperCase();
+        phraseUL.children[0].innerHTML = firtsPhrase;
+        var lastPhrase = phraseUL.children[phraseUL.children.length -1].innerHTML.toLowerCase();
+        var beforeLastPhrase = phraseUL.children[phraseUL.children.length -2].innerHTML.toLowerCase();
+        phraseUL.children[phraseUL.children.length -1].innerHTML = lastPhrase;
+        phraseUL.children[phraseUL.children.length -2].innerHTML = beforeLastPhrase; */
+    </script>
+<!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum. HHHASHDASD HASDHASD -->
+</body>
+</html>
