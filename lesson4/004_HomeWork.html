@@ -1,0 +1,93 @@
+<!-- Доработайте пример, 005_thisExample.html, при наведении мыши к одному из блоков,цвет блока должен измениться, 
+    на уникальный, такой которого еще нету у существующих блоков.
+    Также выведите в блок текстовое оповещение о информации цвета, который используется для фона данного блока. 
+    При попытке закрыть вкладку, придупредите пользователя о том что информация будет утеряна. Используйте window.onload.  -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ключевое слово this</title>
+    <style>
+        div {
+            background-color:green;
+            display: block;
+            height: 100px;
+            width: 100px;
+            margin: 10px;
+            /* float: left; */
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  
+    <script>
+        var divArr = document.getElementsByTagName("div");
+        for (var i = 0; i < divArr.length; i++) {
+            divArr[i].onmouseenter = function () {
+               let color = generateColor();
+               //console.log("Generated: "+color);
+               this.style.backgroundColor = color;
+               this.innerHTML = color;
+            }
+        }
+
+        function generateColor(){
+            let hex = '#'+Math.random().toString(16).substr(-6);    // console.log("hex :"+hex);
+            let rgb = convertToRgb(hex);   // console.log("rgb: "+rgb);
+            //let rgb = "rgb(99, 79, 201)";
+            //let a = document.querySelector("style[background-color: "+rgb+"]");
+            //console.log(a);
+            
+            for(let j=0;j<divArr.length;j++){
+            //console.log("for clauser: "+divArr[j].style.backgroundColor);
+                (divArr[j].style.backgroundColor == rgb)?result=true:result=false;
+                    
+            }
+            //console.log(result); if(result) alert(result)
+
+            while (result) {
+                generateColor();
+            }
+            return rgb;
+        }
+
+        function convertToRgb(hex){
+            hex = hex.replace('#','');
+            r = parseInt(hex.substring(0,2), 16);
+            g = parseInt(hex.substring(2,4), 16);
+            b = parseInt(hex.substring(4,6), 16);
+
+            result = 'rgb('+r+', '+g+', '+b+')';
+            return result;
+        }   
+
+        window.onload = function(){
+            
+            window.addEventListener('beforeunload', function (e) { 
+                e.preventDefault(); 
+                e.returnValue = ''; 
+            }); 
+
+            // window.beforeunload = function () {
+            //     alert("closes???")
+            //     console.log("unload");
+            //     return confirm("Do you really want to close?");
+            // };
+
+            // window.addEventListener('close', function (e) { 
+            //     e.preventDefault(); 
+            //     e.returnValue = ''; 
+            // }); 
+
+
+
+        }
+    </script>
+</script>
+</body>
+</html>

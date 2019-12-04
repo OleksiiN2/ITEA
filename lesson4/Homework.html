@@ -1,0 +1,116 @@
+<!-- Напишите регулярные выражения, которые будут выбирать 
+    индекс - 55535 - 5 numbers
+    ip адресс, пример 255.255.255.255
+    цены в долларах - $0.84, $2.84, $4
+    дата в виде - 30/12/2016 - день, месяц, год
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+ 	<meta charset="UTF-8">
+     <title>Document</title>
+     <style>
+         input{
+             width:300px;
+             display: block;
+             margin: 10px 0; 
+             
+         }
+         div{
+            display: inline-block;
+            margin-left: 10px; 
+         }
+         #reset{
+             display: block;
+             margin-top: 50px;
+             border-radius: 10px;
+             width: 80px;
+         }
+         
+     </style>
+ </head>
+ <body>
+     
+     <input type="text" name="index" placeholder="type index. example: '55555'"/>
+     <button onclick="genPattern('index')">Check</button>
+     <div id="index"></div>
+   
+     <input type="text" name="ipaddr" placeholder="type ip adress. example: '255.255.255.255'"/>
+     <button onclick="genPattern('ipaddr')">Check</button>
+     <div id="ipaddr"></div>
+
+     <input type="text" name="uscurrency" placeholder="type price in $US. example: '$0.84, $2.84, $4'"/>
+     <button onclick="genPattern('uscurrency')">Check</button>
+     <div id="uscurrency"></div>
+
+     <input type="text" name="date" placeholder="type date. example: 'dd/mm/YYYY'"/>
+     <button onclick="genPattern('date')">Check</button>
+     <div id="date"></div>
+    
+     <button id="reset" onclick="reset()">Reset</button>
+
+ 	<script type="text/javascript">
+        function genPattern(type){
+            console.log(type);
+            let pattern;
+            
+            switch (type) {
+                case 'index':
+                    pattern = new RegExp("^[0-9]{5}$");
+                    validate(type,pattern);
+                    break;
+                case 'ipaddr':
+                    pattern = new RegExp("^([12][0-5][0-5][.]){3}[12][0-5][0-5]$");
+                    validate(type,pattern);
+                    break;
+                case 'uscurrency':
+                    pattern = new RegExp("^\\$(0?|[1-9]+[0-9]*)[.][0-9]{1,2}$");
+                    validate(type,pattern);
+                    break;
+                case 'date':
+                    pattern = new RegExp("^(0[1-9]|[1-9]|[12][0-9]|3[01])[/](0[1-9]|1[012])[/]((19|20)\\d\\d)$");
+                    validate(type,pattern);
+                    break;
+            }
+        }
+
+        //validate input value
+        function validate(type,pattern){
+            let text;
+            let result;
+            let div;
+           
+            text = document.getElementsByName(type)[0].value;
+            console.log(text);
+            div = document.querySelector("#"+type);
+            console.log(div);
+            result = pattern.test(text);
+            div.innerHTML = result;
+            result? div.style.color = "green": div.style.color = "red";
+        }
+
+        //clear result value while typing new input value
+        addEventListener("input", function(e){
+            let value =  e.target.name;
+            let div = document.querySelector("#"+value);
+            div.innerHTML = "";    
+        }); 
+
+        //reset all inputs and results
+        function reset(){
+            let div = document.querySelectorAll("div");
+            let input = document.querySelectorAll("input");
+            
+            for (i=0; i<div.length; i++){
+                div[i].innerHTML = "";
+            }
+
+            for (j=0; j<input.length; j++){
+                input[j].value = "";
+            }
+        }
+    
+
+ 	</script>
+ </body>
+ </html>
