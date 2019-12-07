@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <style>
+        body{
+            width:30%;
+            margin: 0 auto;
+        }
+        div{
+            margin: 20px;
+            border: 1px solid black;
+            text-align: center;
+            display: block;
+        }
+    </style>
+    <script>
+      window.onload = function(){
+        let count = 5;
+        let num;
+        for (i=0; i<count; i++){
+            let div = document.createElement("div");
+            let button = document.createElement("button");
+
+            num = i+1;
+            div.innerHTML = "block " + num;
+
+            button.innerHTML = "remove element";
+            div.appendChild(button);
+
+            document.body.appendChild(div);
+
+            button.addEventListener("click", delEl);
+
+        } 
+
+        function delEl(e){
+            console.log(e.target);
+
+            e.target.parentElement.parentElement.removeChild(e.target.parentElement);
+        }
+      }
+    </script>
+</head>
+<body>
+    <!-- Создайте 5 блоков с текстом. Добавьте в каждый из блоков кнопку для его удаления. Используйте только один обработчик.
+    Доработайте пример 004_Attr_Tech.html таким образом, чтобы при наведении на span элементы, подсказка сплыва под ними, а не в модальном окне. Используйте addEventListener -->
+</body>
+
+</html>

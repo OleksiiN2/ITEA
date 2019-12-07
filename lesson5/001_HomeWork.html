@@ -1,0 +1,59 @@
+<!--
+Создайте ссылку и див с текстом внутри, который изначально при загрузке страницы будет скрыт.
+ При клике на ссылку див появляется, если повторно нажать ссылку див и текст должны вернуться. 
+ Также создайте кнопку, которая будет отменять выполнение обработчика клика по ссылке.
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Document</title>
+     <style>
+         .hide{
+             visibility: hidden;
+         }
+         
+     </style>
+     <script>
+         window.onload = function(){
+             let a = document.querySelector("a");
+             let div = document.querySelector("div");
+             let button = document.querySelector("button");
+             a.setAttribute("listener", "true");
+
+             a.addEventListener("click", showmore); 
+             button.addEventListener("click",cancelEvent);
+
+            function showmore(e){
+                e.preventDefault();
+                div.classList.toggle("hide");
+            }
+
+            function cancelEvent(e){
+                e.preventDefault();
+                if(a.getAttribute("listener")=="true"){
+                    a.removeEventListener("click", showmore);
+                    a.setAttribute("listener", "false");    
+                }
+                else{
+                    a.addEventListener("click", showmore);
+                    a.setAttribute("listener", "true");
+                    
+                }
+                
+                
+            }
+         }
+    </script>
+ </head>
+ <body>
+     <a href="#">Show more / less</a>
+     <div class="hide">
+            Скрытый текст
+     </div>
+     <button>Turn ON / OFF event listener</button>
+     
+ </body>
+ </html>
