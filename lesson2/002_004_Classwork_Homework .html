@@ -1,0 +1,132 @@
+<!-- 
+    Перепишите все селекторы из первой папки 001_CSS_Selectors с помощью известных Вам методов и свойств.
+    В примере с классом добавьте к существующем классу, класс с именем newclass, а также выведите в консоль окне все стили что есть у элемента с этим классом
+    В примере с индентификатором добавьте свойства marginTop с значением 10px и background с значением red
+ -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Prev+Next</title>
+    <style>
+     /* div + p {
+            background-color: yellow;
+        }
+        p ~ ul {
+            background: #ff0000;
+        } */
+    </style>
+</head>
+<body>
+    <!-- <h1>Главная</h1>
+
+    <div>
+        <h2>Заголовок</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quas, officiis soluta, eligendi perspiciatis dolore inventore consequuntur possimus dolores cupiditate provident id repudiandae consequatur nobis veniam, excepturi impedit consectetur eos!</p>
+    </div>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quas, officiis soluta, eligendi perspiciatis dolore inventore consequuntur possimus dolores cupiditate provident id repudiandae consequatur nobis veniam, excepturi impedit consectetur eos!</p>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quas, officiis soluta, eligendi perspiciatis dolore inventore consequuntur possimus dolores cupiditate provident id repudiandae consequatur nobis veniam, excepturi impedit consectetur eos!</p>
+    <span>Строк </span>
+
+    <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero praesentium quasi laudantium ipsam. Aperiam dicta sunt pariatur repudiandae minima, cum cumque minus blanditiis voluptate quaerat reiciendis a magni quos impedit?</div>
+    <ul>
+        <li>Чай</li>
+        <li>Кофе</li>
+        <li>Молоко</li>
+    </ul>
+
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi minima perspiciatis dolor cumque quo eum molestias necessitatibus ipsam dolorum molestiae inventore atque iure recusandae fugiat fugit beatae ad nemo, totam.</p>
+    <ul>
+        <li>Чай</li>
+        <li>Молоко</li>
+        <li>Кофе</li>
+    </ul>
+
+    <h2>Another list</h2>
+    <ul>
+        <li>Кофе</li>
+        <li>Чай</li>
+        <li>Молоко</li>
+    </ul> -->
+</body>
+<script>
+        window.onload = function(){
+       
+       let h1 = document.createElement("h1");
+       h1.innerHTML = "Главная";
+       let div = document.createElement("div");
+       let h2_1 = document.createElement("h2");
+       h2_1.innerHTML = "Заголовок";
+       let h2_2 = document.createElement("h2");
+       h2_2.innerHTML = "Another list";
+       let p = document.createElement("p");
+       p.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quas, officiis soluta, eligendi perspiciatis dolore inventore consequuntur possimus dolores cupiditate provident id repudiandae consequatur nobis veniam, excepturi impedit consectetur eos!";
+       let p1 = document.createElement("p");
+       p1.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quas, officiis soluta, eligendi perspiciatis dolore inventore consequuntur possimus dolores cupiditate provident id repudiandae consequatur nobis veniam, excepturi impedit consectetur eos!";
+       let p2 = document.createElement("p");
+       p2.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quas, officiis soluta, eligendi perspiciatis dolore inventore consequuntur possimus dolores cupiditate provident id repudiandae consequatur nobis veniam, excepturi impedit consectetur eos!";
+       let p3 = document.createElement("p");
+       p3.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quas, officiis soluta, eligendi perspiciatis dolore inventore consequuntur possimus dolores cupiditate provident id repudiandae consequatur nobis veniam, excepturi impedit consectetur eos!";
+      
+       
+       let span = document.createElement("span");
+       span.innerHTML = "Строк";
+       let div2 = document.createElement("div");
+       div2.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, quas, officiis soluta, eligendi perspiciatis dolore inventore consequuntur possimus dolores cupiditate provident id repudiandae consequatur nobis veniam, excepturi impedit consectetur eos!";
+       let products = ["Чай","Молоко","Кофе"];
+       let ul1 = document.createElement("ul");
+       let ul2 = document.createElement("ul");
+       let ul3 = document.createElement("ul");
+
+        for(i=0; i<products.length; i++){
+            let li = document.createElement("li");
+            li.innerHTML = products[i];
+            ul1.appendChild(li);
+        }
+
+        for(j=products.length-1; j>=0; j--){
+            let li = document.createElement("li");
+            li.innerHTML = products[j];
+            ul2.appendChild(li);
+        }
+
+        for(i=0; i<products.length; i++){
+            let li = document.createElement("li");
+            li.innerHTML = products[i];
+            ul3.appendChild(li);
+        }
+
+        div.appendChild(h2_1);
+        div.appendChild(p);
+
+        document.body.appendChild(h1);
+        document.body.appendChild(div);
+        document.body.appendChild(p1);
+        document.body.appendChild(p2);
+        document.body.appendChild(span);
+        document.body.appendChild(div2);
+        document.body.appendChild(ul1);
+        document.body.appendChild(p3);
+        document.body.appendChild(ul2);
+        document.body.appendChild(h2_2);
+        document.body.appendChild(ul3);
+
+
+        let colorP = document.querySelectorAll("div+p");
+        for ( i=0; i<colorP.length; i++){
+            colorP[i].style.backgroundColor = "yellow";
+        }
+
+        let colorUl = document.querySelectorAll("p ~ ul");
+        for ( i=0; i<colorUl.length; i++){
+            colorUl[i].style.background = "#ff0000";
+        }
+
+    
+    
+    
+      }
+    </script>
+</html>
