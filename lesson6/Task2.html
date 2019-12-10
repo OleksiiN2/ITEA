@@ -1,0 +1,66 @@
+<!--  drag;  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background: yellowgreen;
+        }
+        img{
+            width:200px;
+        }
+    </style>
+    <script>
+        window.addEventListener("load", function(){
+            var cat = document.getElementById('cat');
+            cat.onmousedown = function(e) {
+
+                var coords = getCoords(cat);
+                var shiftX = e.pageX - coords.left;
+                var shiftY = e.pageY - coords.top;
+
+                cat.style.position = 'absolute';
+                document.body.appendChild(cat);
+                moveAt(e);
+
+                cat.style.zIndex = 1000; // над другими элементами
+
+                function moveAt(e) {
+                    cat.style.left = e.pageX - shiftX + 'px';
+                    cat.style.top = e.pageY - shiftY + 'px';
+                }
+
+                document.onmousemove = function(e) {
+                    moveAt(e);
+                };
+
+                cat.onmouseup = function() {
+                    document.onmousemove = null;
+                    cat.onmouseup = null;
+                };
+
+            }
+
+            cat.ondragstart = function() {
+                return false;
+            };
+
+            function getCoords(elem) {   // кроме IE8-
+                var box = elem.getBoundingClientRect();
+                return {
+                    top: box.top + pageYOffset,
+                    left: box.left + pageXOffset
+                };
+            }
+
+        })
+    </script>
+</head>
+<body>
+        <div id="cat"><img src="cat2.png" alt="cat2"></div>
+</body>
+</html>

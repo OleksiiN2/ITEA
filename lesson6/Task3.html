@@ -1,0 +1,64 @@
+<!-- 2. создайте div, при клике на него, div начинает двигаться вправо, при клике на кнопку - останавливается, при попадании div к краю окна, он переходит к началу окна. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background: yellowgreen;
+        }
+        #rocket{
+            margin-top: 200px;
+            position: relative;
+        }
+        #rocket img{
+            width: 300px;
+        }
+        #stop{
+            width: 100px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            var rocket = document.getElementById('rocket');
+            var stopBtn = document.getElementById('stop');
+            var timerUp;
+            
+            rocket.onclick = function(e) {
+                
+                var onX = this.getBoundingClientRect().left; console.log("onX " +onX);
+                var startPosition = 8; console.log(startPosition);
+                var maxWidth = this.getBoundingClientRect().width -300; console.log(maxWidth);
+                var counter = 1;
+                timerUp = setInterval( function(){
+              
+                    var currentPosition = onX + counter*5;
+                    console.log(currentPosition)
+                    if(currentPosition<=maxWidth){
+                        rocket.style.left = onX + counter*5 + 'px';
+                        counter++;
+                    }
+                    else{
+                        onX = startPosition; 
+                        counter = 1;
+                    }
+                    
+              }, 15);
+            }
+
+            stopBtn.addEventListener("click", function(){
+                clearInterval(timerUp);
+            })
+
+            
+        }
+    </script>
+</head>
+<body>
+    <div id="rocket"><img src="rocket.png" alt="rocket"></div>
+    <img id="stop" src="stop.png" alt="stop">
+</body>
+</html>
