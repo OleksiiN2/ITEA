@@ -1,0 +1,54 @@
+<!-- Реализуйте последний 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <script>
+// ---- родительский класс ----
+
+        function Doctor() {
+            this.walk = true;
+            this.eat = true;
+            this.drink = true;
+            this.cure = function () {
+                alert("I am a doctor. I can cure everything");
+            };
+        };
+
+        // ---- класс наследник ----
+
+         function Dentist() {
+            this.cure = function(){
+                alert("I am dentist. I can treth teeth");
+            }
+        };
+
+        function Surgeon() {
+            this.cure = function(){
+                alert("I am surgeon. I can cut your skin and sew the wound");
+            }
+        };
+
+        Dentist.prototype = new Doctor();
+        Surgeon.prototype = new Doctor();
+
+        let Doctor1 = new Doctor();
+        let Dentist1 = new Dentist();
+        let Surgeon1 = new Surgeon();
+
+        console.log(Doctor1);
+        console.log(Dentist1);
+        console.log(Surgeon1);
+
+        Doctor1.cure();
+        Dentist1.cure();
+        Surgeon1.cure();
+
+        
+    
+    </script>
+</head>
+<body>
+</body>
+</html>

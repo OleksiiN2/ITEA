@@ -1,0 +1,25 @@
+<!-- Создайте функцию, которая возвращает день недели для даты. День нужно возвратить в формате - понедельник имеет номер 1, вторник номер 2, …, воскресенье - номер 7. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <script>
+        window.onload = function(){
+            let input = document.getElementsByTagName("input")[0];
+            let dayOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+            input.onchange = function(){
+                let currentDate = new Date(input.value);
+                //console.log(currentDate.getDay())
+                //console.log(dayOfWeek[currentDate.getDay()])
+                alert(dayOfWeek[currentDate.getDay()]);
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <Label>Введите дату:<input type="date" placeholder="Введите дату"></Label>
+</body>
+</html>

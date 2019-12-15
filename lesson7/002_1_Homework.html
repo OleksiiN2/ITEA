@@ -1,0 +1,58 @@
+<!-- Реализуйте последний 2 слайда в презентации с помощью пройденого на уроке материала -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework</title>
+    <script>
+//man class
+         function Man(/*walk, eat, drink*/) {
+            this.walk = true;
+            this.eat = true;
+            this.drink = true;
+        };
+
+//soldier class
+        function Soldier(shoot){
+            
+            this.shoot = function(){
+                if(shoot){
+                    alert("I am soldier. I can shoot");
+                }
+                else{
+                    alert("I am soldier. But I can't shoot. I haven't ammos");
+                }
+            }
+        }
+
+        Soldier.prototype = new Man();
+
+//doctor class
+        function Doctor(cure){
+            this.cure = function(){
+                if(cure){
+                    alert("I am doctor. I can cure");
+                }
+                else{
+                    alert("I am doctor. But I can't cure. My working hours were finished");
+                }
+            }
+        }
+        Doctor.prototype = new Man();
+
+        let Man1 = new Man();
+        console.log(Man1)
+
+        let Soldier1 = new Soldier(true);
+        console.log(Soldier1)
+        Soldier1.shoot();
+
+        let Doctor1 = new Doctor(false);
+        console.log(Doctor1)
+        Doctor1.cure();
+    
+    </script>
+</head>
+<body>
+</body>
+</html>
