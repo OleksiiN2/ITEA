@@ -1,0 +1,55 @@
+ <!-- Создайте страницу которая запрашивает имя пользователя, если пользователь вводит "Admin" либо "admin" он попадает на страницу, 
+которая оповещает его о том что " Пользоваетль Admin(не статическая строка, а данные что ввел пользователь) вошел в систему" а рядом разместите кнопку "Выход"
+ которая вернет пользователя к модальному окну ввода логина. Реализуйте код как для куки так и для localstorage. -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+       window.onload = function(){
+           function getLoginName(){
+                var login = prompt("Enter Login");
+                if (login == "Admin" || login == "admin") {
+                    window.localStorage["logedAs"] = login;
+                    showWelcomePage();
+                }
+                else {
+                    getLoginName();
+                }     
+           }
+
+            if(window.localStorage.logedAs == "admin" || window.localStorage.logedAs == "Admin") {
+                showWelcomePage();
+            }
+            else {
+                getLoginName();
+            }
+
+           function showWelcomePage () {
+                var loginName = window.localStorage.logedAs;
+                var btn = document.createElement("button");
+                btn.innerHTML = "Logout";
+                var par = document.createElement("p");
+                par.innerHTML = "Welcome back, "+ loginName;
+                document.body.appendChild(par);
+                document.body.appendChild(btn);
+            };
+
+            var logOutbutton = document.querySelector("button");
+            logOutbutton.addEventListener("click", function () {
+                    window.localStorage.removeItem("logedAs");
+                    logOutbutton.parentElement.innerHTML = ""
+                    getLoginName();
+            });
+
+
+       }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

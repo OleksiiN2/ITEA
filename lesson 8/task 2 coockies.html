@@ -1,0 +1,83 @@
+ <!-- Создайте страницу которая запрашивает имя пользователя, если пользователь вводит "Admin" либо "admin" он попадает на страницу, 
+которая оповещает его о том что " Пользоваетль Admin(не статическая строка, а данные что ввел пользователь) вошел в систему" а рядом разместите кнопку "Выход"
+ которая вернет пользователя к модальному окну ввода логина. Реализуйте код как для куки так и для localstorage. -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+       window.onload = function(){
+
+           var cookieName = "loginName";
+
+           function getLoginName(){
+                var login = prompt("Enter Login");
+                var expires = new Date();
+                var newDate = expires.getTime()+86400000 ;
+                expires.setTime(newDate);
+               
+                if (login == "Admin" || login == "admin") {
+                    setCookie(login, expires);
+                    showWelcomePage();
+                }
+                else {
+                    getLoginName();
+                }     
+            }
+
+            if( getCookie(cookieName) === "Admin" || getCookie(cookieName) === "admin" )  {
+                showWelcomePage();
+            }
+            else {
+                getLoginName();
+            }
+
+            function setCookie (login, expires) {
+                var cookieLogin = "loginName=" + login + ";";
+                var cookieExpires = "expires=" + expires + ";";
+                document.cookie = cookieLogin + cookieExpires;
+            };  
+
+            function getCookie(cookiename) {
+                var name = cookiename + "=";
+                var cookieArray = document.cookie.split(';');
+                for (var i=0; i < cookieArray.length; i++) {
+                    var cookieValue = cookieArray[i];
+                    while (cookieValue.charAt(0)==' ') {
+                        cookieValue = cookieValue.substring(1);
+                    };
+                    if (cookieValue.indexOf(name) != -1) {
+                        return cookieValue.substring(name.length,cookieValue.length);
+                    }
+                };
+                return "";
+            };
+
+           function showWelcomePage () {
+                var loginName = getCookie(cookieName);
+                var btn = document.createElement("button");
+                btn.innerHTML = "Logout";
+                var par = document.createElement("p");
+                par.innerHTML = "Welcome back, "+ loginName;
+                document.body.appendChild(par);
+                document.body.appendChild(btn);
+            };
+
+            var logOutbutton = document.querySelector("button");
+            logOutbutton.addEventListener("click", function () {
+                    
+                    logOutbutton.parentElement.innerHTML = ""
+                    getLoginName();
+            });
+
+
+       }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
