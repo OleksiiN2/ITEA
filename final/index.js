@@ -20,8 +20,13 @@ window.onload = function(){
         })
             .then(function (data) {
          
-                //удаляем существующий список и пагинацию,если есть при переходе между страницами
-                let ulForDelete1 = document.getElementsByTagName("ul");
+                //удаляем существующий список,подпись и пагинацию,если есть при переходе между страницами
+                const ulForDelete1 = document.getElementsByTagName("ul");
+                const h5ForDelete = document.getElementsByTagName("h5")[0];
+                if(h5ForDelete != "undefind" && h5ForDelete != "" && h5ForDelete != null){
+                    const h5parent = h5ForDelete.parentElement;
+                    h5parent.removeChild(h5ForDelete);
+                }
                 if(ulForDelete1.length>0){
                     for (i=ulForDelete1.length-1; i>=0; i--){
                         let parent = ulForDelete1[i].parentElement;
@@ -116,6 +121,10 @@ window.onload = function(){
                 for (var i = 0; i < paginationLiArray.length; i++) {
                     paginationLiArray[i].addEventListener('click', getPeople);
                 }
+                const reserved = document.createElement("h5");
+                reserved.innerHTML = "@2019 Oleksii Nedosiek -onedosiek@gmail.com-"
+                document.body.appendChild(reserved);
+            
             });
     };
 

@@ -59,6 +59,11 @@ td li{
      list-style-position: inside;
      font-size: 18px;  
 }
+h5{
+    color: lightgray;
+    text-align: center;
+    padding-top: 30px;
+}
 
 /* media */
 @media screen and (max-width: 1630px) {
@@ -115,11 +120,17 @@ td li{
         list-style: url("img/liststyle25.png");
         font-size: 12px;   
     }
+    h5{
+        font-size: 1rem;
+    }
 }
 
 @media screen and (max-width: 600px) {
     table{
         padding:90px 0;
+    }
+    h5{
+        font-size: 0.8rem;
     }
 }
 
@@ -129,6 +140,9 @@ td li{
     }
     table{
         padding:50px 0;
+    }
+    h5{
+        font-size: 0.7rem;
     }
 }
 
